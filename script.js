@@ -1,16 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const sendBtn = document.getElementById('send-message-btn');
+    const nameInput = document.getElementById('buyer-name');
+    const mobileInput = document.getElementById('buyer-mobile');
     const messageBox = document.getElementById('buyer-message');
     const statusMsg = document.getElementById('form-status');
 
-    if (sendBtn && messageBox) {
+    if (sendBtn && messageBox && nameInput && mobileInput) {
         sendBtn.addEventListener('click', async () => {
+            const name = nameInput.value.trim();
+            const mobile = mobileInput.value.trim();
             const message = messageBox.value.trim();
             
-            if (!message) {
+            if (!name || !mobile || !message) {
                 if (statusMsg) {
-                    statusMsg.textContent = 'Please enter a message.';
+                    statusMsg.textContent = 'Please fill in all mandatory fields (Name, Mobile, and Message).';
                     statusMsg.className = 'status-msg status-error';
                 }
                 return;
@@ -35,8 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify({
+                        name: name,
+                        mobile: mobile,
                         message: message,
-                        _subject: "New Inquiry: ROF Ananda 2BHK Flat",
+                        _subject: `New Inquiry from ${name}`,
                         _template: "table"
                     })
                 });
@@ -46,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok) {
                     statusMsg.textContent = 'Message sent successfully! The owner will be in touch.';
                     statusMsg.className = 'status-msg status-success';
+                    nameInput.value = '';
+                    mobileInput.value = '';
                     messageBox.value = '';
                 } else {
                     throw new Error(result.message || 'Submission failed');

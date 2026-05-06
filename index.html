@@ -122,7 +122,9 @@
                         <strong>⚠️ Important:</strong> Serious buyers only. Brokers and agents, please do not contact.
                     </p>
                     <div class="message-box">
-                        <textarea id="buyer-message" placeholder="Leave a message for the owner. Be sure to include your contact information so they can reach you..." rows="5" required></textarea>
+                        <input type="text" id="buyer-name" placeholder="Your Name" required>
+                        <input type="tel" id="buyer-mobile" placeholder="Mobile Number" required>
+                        <textarea id="buyer-message" placeholder="Your Message" rows="5" required></textarea>
                         <button id="send-message-btn" class="btn-primary">Send Message</button>
                     </div>
                     <p id="form-status" class="status-msg" style="margin-top: 0.5rem;"></p>
