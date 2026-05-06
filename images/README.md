@@ -12,5 +12,6 @@ To update the images on the webpage, follow these simple steps:
    - The webpage will automatically detect these files and display them instead of the placeholders.
 
 3. **Technical Note**:
-   - The webpage uses an `onerror` fallback. If the `.jpg` file is missing, it will show the `.svg` placeholder.
-   - Supported format: `.jpg` (You can change the extension in `index.html` if you prefer `.png` or `.webp`).
+   - The webpage points to `towers.jpg`, `park.jpg`, and `temple.jpg`.
+   - The current files in this folder are placeholders (in SVG format but named as `.jpg` to ensure they load instantly).
+   - When you replace them with your real photos, make sure to use the exact same filenames.
