@@ -121,10 +121,15 @@
                     <p class="warning-text">
                         <strong>⚠️ Important:</strong> Serious buyers only. Brokers and agents, please do not contact.
                     </p>
-                    <div class="message-box">
-                        <textarea id="buyer-message" placeholder="Leave a message for the owner. Be sure to include your contact information so they can reach you..." rows="5" required></textarea>
-                        <button id="send-message-btn" class="btn-primary">Send Message via Email</button>
-                    </div>
+                    <form action="https://api.web3forms.com/submit" method="POST" class="message-box">
+                        <!-- Use the Access Key to mask the email address -->
+                        <input type="hidden" name="access_key" value="03d94214-2e52-4330-95ee-73ce1c33df58">
+                        <input type="hidden" name="subject" value="New Inquiry: ROF Ananda 2BHK Flat">
+                        <input type="hidden" name="from_name" value="FlatSell Visitor">
+                        
+                        <textarea name="message" id="buyer-message" placeholder="Leave a message for the owner. Be sure to include your contact information so they can reach you..." rows="5" required></textarea>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
                     <p id="form-status" class="status-msg" style="margin-top: 0.5rem;"></p>
                 </div>
             </div>
