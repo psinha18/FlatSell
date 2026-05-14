@@ -68,4 +68,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    // Gallery switching logic
+    const mainImg = document.querySelector('.main-img');
+    const thumbnails = document.querySelectorAll('.gallery-thumbnails .gallery-img');
+
+    thumbnails.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            // Store current main src to swap back if needed, or just replace
+            const newSrc = thumb.src;
+            const newAlt = thumb.alt;
+            
+            // Simple fade transition effect
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = newSrc;
+                mainImg.alt = newAlt;
+                mainImg.style.opacity = '1';
+            }, 200);
+        });
+        
+        // Add pointer cursor to thumbnails
+        thumb.style.cursor = 'pointer';
+    });
+
+    // Security Gate Image Upload Preview
+    const securityUploadInput = document.getElementById('security-upload-input');
+    const securityPreviewImg = document.getElementById('security-preview');
+
+    if (securityUploadInput && securityPreviewImg) {
+        securityUploadInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    securityPreviewImg.src = event.target.result;
+                    
+                    // Also update the gallery thumbnail if it exists
+                    const galleryThumb = document.querySelector('img[src*="security_gate"]');
+                    if (galleryThumb) {
+                        galleryThumb.src = event.target.result;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
 });

@@ -1,0 +1,7 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f3f4f6"/>
+  <path d="M100 250L150 150H250L300 250M150 150V200M250 150V200" stroke="#9ca3af" stroke-width="4" fill="none"/>
+  <circle cx="300" cy="100" r="30" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+  <text x="200" y="270" font-family="Outfit, sans-serif" font-size="18" fill="#6b7280" text-anchor="middle">Park & Play Area</text>
+  <text x="200" y="290" font-family="Outfit, sans-serif" font-size="12" fill="#9ca3af" text-anchor="middle">Replace with park.jpg</text>
+</svg>

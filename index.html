@@ -27,6 +27,8 @@
                     <div class="gallery-thumbnails">
                         <img src="images/park.jpg" alt="Society Park and Play Area" class="gallery-img">
                         <img src="images/temple.jpg" alt="Society Temple" class="gallery-img">
+                        <img src="images/security_gate.png" alt="24/7 Security and Gated Entry" class="gallery-img">
+                        <img src="images/commercial_complex.png" alt="Nearby Commercial Complex" class="gallery-img">
                     </div>
                 </div>
 
@@ -104,31 +106,71 @@
                         <h3>Road-Facing View</h3>
                         <p>Enjoy a clear view facing Pataudi Road.</p>
                     </div>
+                    <div class="amenity-card">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <h3>Secure Society</h3>
+                        <p>24/7 manned security and gated entry for peace of mind.</p>
+                    </div>
                 </div>
             </div>
 
             <hr class="divider">
 
             <div class="bottom-sections">
+                <div class="location-context">
+                    <h2>Location & Connectivity</h2>
+                    <p>Experience the convenience of living in a prime hub with everything you need just a stone's throw away.</p>
+                    
+                    <div class="image-upload-container">
+                        <div class="image-preview-box">
+                            <img src="images/security_gate.png" alt="Security Gate" id="security-preview">
+                            <div class="upload-overlay">
+                                <label for="security-upload-input" class="upload-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                    <span>Upload New Image</span>
+                                </label>
+                                <input type="file" id="security-upload-input" accept="image/*" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="image-info">
+                            <h3>24/7 Security & Gated Entry</h3>
+                            <p>Ensuring your safety with professional security personnel and automated visitor management. A secure environment for you and your family.</p>
+                        </div>
+                    </div>
+
+                    <div class="school-search-container">
+                        <div class="school-info">
+                            <h3>Explore Nearby Schools</h3>
+                            <p>Education is a priority. Discover top-rated schools and educational institutions in the vicinity of ROF Ananda.</p>
+                            <a href="https://www.google.com/maps/search/schools+near+ROF+Ananda+Sector+95+Gurugram" target="_blank" class="map-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                View Schools on Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="video-section">
                     <h2>Property Video Tour</h2>
                     <p>Watch a detailed walkthrough of the flat below.</p>
                     <video id="video-player" src="property_tour.mp4" controls controlsList="nodownload" oncontextmenu="return false;" class="video-preview" style="display: block; margin-top: 1rem;"></video>
                 </div>
+            </div>
 
-                <div class="contact-section">
-                    <h2>Contact Owner</h2>
-                    <p class="warning-text">
-                        <strong>⚠️ Important:</strong> Serious buyers only. Brokers and agents, please do not contact.
-                    </p>
-                    <div class="message-box">
-                        <input type="text" id="buyer-name" placeholder="Your Name" required>
-                        <input type="tel" id="buyer-mobile" placeholder="Mobile Number" required>
-                        <textarea id="buyer-message" placeholder="Your Message" rows="5" required></textarea>
-                        <button id="send-message-btn" class="btn-primary">Send Message</button>
-                    </div>
-                    <p id="form-status" class="status-msg" style="margin-top: 0.5rem;"></p>
+            <div class="contact-section">
+                <h2>Contact Owner</h2>
+                <p class="warning-text">
+                    <strong>⚠️ Important:</strong> Serious buyers only. Brokers and agents, please do not contact.
+                </p>
+                <div class="message-box">
+                    <input type="text" id="buyer-name" placeholder="Your Name" required>
+                    <input type="tel" id="buyer-mobile" placeholder="Mobile Number" required>
+                    <textarea id="buyer-message" placeholder="Your Message" rows="5" required></textarea>
+                    <button id="send-message-btn" class="btn-primary">Send Message</button>
                 </div>
+                <p id="form-status" class="status-msg" style="margin-top: 0.5rem;"></p>
             </div>
         </div>
     </main>
