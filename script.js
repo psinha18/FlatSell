@@ -1,5 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Check if price should be revealed
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('reveal_price') === 'true') {
+        const priceEl = document.getElementById('property-price');
+        if (priceEl) {
+            // Use base64 to slightly obfuscate the price from plain text scanners
+            priceEl.textContent = atob('SU5SIDY1IExha2g='); // INR 65 Lakh
+            priceEl.style.fontSize = '3rem'; // Restore original size
+            
+            // Re-add the price label
+            const labelEl = document.createElement('span');
+            labelEl.className = 'price-label';
+            labelEl.textContent = 'Price';
+            priceEl.parentNode.appendChild(labelEl);
+        }
+    }
+
     const sendBtn = document.getElementById('send-message-btn');
     const nameInput = document.getElementById('buyer-name');
     const mobileInput = document.getElementById('buyer-mobile');
@@ -31,6 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const domain = 'gmail.com';
             const endpoint = `https://formsubmit.co/ajax/${user}@${domain}`;
 
+            // Generate a reveal link that the owner can share with the requester
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('reveal_price', 'true');
+            let revealLink = currentUrl.toString();
+            
+            // Prevent Formsubmit from blocking local test links as spam
+            if (revealLink.startsWith('file:') || revealLink.includes('localhost') || revealLink.includes('127.0.0.1')) {
+                revealLink = '[Live URL]?reveal_price=true';
+            }
+
             try {
                 const response = await fetch(endpoint, {
                     method: 'POST',
@@ -42,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         name: name,
                         mobile: mobile,
                         message: message,
+                        Reveal_Price_Link: revealLink,
                         _subject: `New Inquiry from ${name}`,
                         _template: "table"
                     })
@@ -91,26 +119,4 @@ document.addEventListener('DOMContentLoaded', () => {
         thumb.style.cursor = 'pointer';
     });
 
-    // Security Gate Image Upload Preview
-    const securityUploadInput = document.getElementById('security-upload-input');
-    const securityPreviewImg = document.getElementById('security-preview');
-
-    if (securityUploadInput && securityPreviewImg) {
-        securityUploadInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    securityPreviewImg.src = event.target.result;
-                    
-                    // Also update the gallery thumbnail if it exists
-                    const galleryThumb = document.querySelector('img[src*="security_gate"]');
-                    if (galleryThumb) {
-                        galleryThumb.src = event.target.result;
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    }
 });
